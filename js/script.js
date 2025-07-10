@@ -498,7 +498,7 @@ const drawText = (canvas, img) => {
         } else {
             // 单个水印或自定义数量模式
             const positions = [];
-            const padding = Math.min(canvas.width, canvas.height) * 0.1;
+            const padding = Math.min(canvas.width, canvas.height) * 0.02;
 
             if (pattern === 'single' || count === 1) {
                 // 单个水印位置计算
