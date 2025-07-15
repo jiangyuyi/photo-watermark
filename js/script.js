@@ -56,7 +56,8 @@ const downloadCanvasAsImage = (canvas, fileName) => {
     var blob, imageData, link;
     link = document.createElement('a');
     link.download = generateFileName(fileName);
-    imageData = canvas.toDataURL('image/png');
+    // 修改为JPEG格式，质量设为0.9以平衡质量和文件大小
+    imageData = canvas.toDataURL('image/jpeg', 0.9);
     blob = dataURItoBlob(imageData);
     link.href = URL.createObjectURL(blob);
     graph.appendChild(link);
