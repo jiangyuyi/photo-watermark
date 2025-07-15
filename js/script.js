@@ -23,7 +23,7 @@ dataURItoBlob = function (dataURI) {
         arr[i] = binStr.charCodeAt(i);
     }
     return new Blob([arr], {
-        type: 'image/png'
+        type: 'image/jpeg'
     });
 };
 
@@ -41,7 +41,7 @@ const generateFileName = (fileName) => {
         .getDate())) + ' ' + (
         pad(d
             .getHours())) + (pad(d.getMinutes())) + (pad(d.getSeconds()))
-    return fileName + '_' + timeStr + '.png';
+    return fileName + '_' + timeStr + '.jpg';
 };
 const redrawCanvas = (canvas, img) => {
     // 重新设置canvas的宽高，会清空画布
@@ -855,7 +855,7 @@ function downloadAll() {
                             return;
                         }
 
-                        let fileName = item.fileName.replace(/\.[^/.]+$/, "") + '.png';
+                        let fileName = item.fileName.replace(/\.[^/.]+$/, "") + '.jpg';
                         zip.file(fileName, blob);
                         completed++;
 
@@ -866,7 +866,7 @@ function downloadAll() {
                         updateETA(completed);
 
                         resolve();
-                    }, 'image/png');
+                    }, 'image/jpeg');
                 };
 
                 attempt();
@@ -1217,7 +1217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function copyImageToClipboard(canvas) {
     canvas.toBlob(blob => {
         try {
-            const item = new ClipboardItem({"image/png": blob});
+            const item = new ClipboardItem({"image/jpeg": blob});
             navigator.clipboard.write([item]).then(() => {
                 // 显示成功提示
                 showToast('图片已复制到剪贴板');
@@ -1229,7 +1229,7 @@ function copyImageToClipboard(canvas) {
             console.error('复制失败:', err);
             showToast('您的浏览器不支持此功能');
         }
-    }, 'image/png');
+    }, 'image/jpeg');
 }
 
 // 添加提示框功能
