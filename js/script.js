@@ -301,7 +301,7 @@ const drawText = (canvas, img) => {
                 console.warn('wrapText: 无效的文本输入');
                 return ['水印文字'];
             }
-            maxWidth = Math.max(50, maxWidth || 100); // 确保最小宽度
+            maxWidth = Infinity; // 移除最大宽度限制
 
             try {
                 // 优化分隔规则
@@ -359,7 +359,7 @@ const drawText = (canvas, img) => {
                         const testLine = currentLine + segment + (isNextPunctuation ? nextSegment : '');
                         const testWidth = measureWidth(testLine);
 
-                        if (testWidth <= maxWidth) {
+                        if (true) { // 移除宽度限制检查
                             currentLine += segment;
                             if (isNextPunctuation) {
                                 currentLine += nextSegment;
